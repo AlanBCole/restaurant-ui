@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="OpenSourceTacos">
+  <head>
+    <meta charset="utf-8">
+    <title>Open Source Tacos</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css">
+    <!-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="/main.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.2/angular.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.2/angular-route.js" charset="utf-8"></script>
+    <script src="/module.js" charset="utf-8"></script>
+    <script src="/controller.restaurant.js" charset="utf-8"></script>
+    <script src="/controller.order.js" charset="utf-8"></script>
+    <script src="/factory.js" charset="utf-8"></script>
+
+  </head>
+  <body ng-controller="restaurant as restaurant">
+  <div class="jumbotron">
+    <div class="container">
+
+      <h1>{{restaurant.name}}</h1>
+
+    </div>
+  </div>
+
+  <nav class="navbar navbar-default">
+    <button type="button" class="pull-right btn btn-warning btn-lg">
+      <span class="glyphicon glyphicon-shopping-cart"></span>
+      <span class="badge">{{restaurant.order.length}}</span>
+    </button>
+  </nav>
+
+  <div class="container">
+
+    <div class="row">
+      <div ng-click="restaurant.buy(item)" ng-repeat="item in restaurant.tacoStand.menu.plate" class="col-xs-12 col-md-6 entree">
+
+        <h3>{{item.name}}</h3>
+        <p>{{item.description}}</p>
+        <p>{{item.price | currency}}</p>
+
+      </div>
+    </div>
+
+  </div>
+
+
+  </body>
+</html>
