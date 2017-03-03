@@ -17,14 +17,36 @@ function restaurantCtrl(restaurantInfo) {
     if (item) {
        restaurant.order.push(item);
        console.log(restaurant.order);
+       restaurant.total = 0;
+       for (var i = 0; i < restaurant.order.length; i++) {
+         restaurant.total += restaurant.order[i].price;
+       }
     }
   }
 
-  // restaurant.checkOut () {
-  //   restaurant.cart = true;
-  //
-  // }
+  restaurant.citrusFree = function () {
+    restaurant.cf = true;
+    restaurant.v = false;
+    restaurant.gf = false;
+  }
 
-  restaurant
-  // var something = new Order(order)
+  restaurant.glutenFree = function () {
+    restaurant.cf = false;
+    restaurant.v = false;
+    restaurant.gf = true;
+  }
+
+  restaurant.vegan = function () {
+    restaurant.cf = false;
+    restaurant.v = true;
+    restaurant.gf = false;
+  }
+
+  restaurant.purchase = function () {
+    var buy = confirm("Do you want to purchase this food?")
+    if (buy) {
+      alert("Thanks!")
+      restaurant.order = [];
+    }
+  }
 }
